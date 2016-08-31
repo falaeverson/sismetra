@@ -1,0 +1,81 @@
+<div class="navbar-inner">
+    <div class="container">
+        <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+        <a class="brand" href="{PATH_CONTROLLER}">SISMETRA</a>
+
+        <p class="navbar-text pull-right">
+            <i class="icon-user icon-white"></i>&nbsp;{Global_usuario}&nbsp;
+            <a href="{PATH}/login/sair" title="Sair"><i class="icon-off icon-white"></i></a>
+        </p>
+
+        <div class="nav-collapse collapse">
+            <ul class="nav">
+
+                <!-- Sistema -->
+                <li class="dropdown {Global_active_home}">
+                    
+                    <a href="{PATH_CONTROLLER}" class="dropdown-toggle" data-toggle="dropdown">
+                        <i class="icon-th-list icon-white"></i>&nbsp;Sistema <b class="caret"></b>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li {Global_li_active_home}><a href="{PATH_CONTROLLER}/home">Home</a></li>
+                        <!-- li {Global_li_active_usuario}><a href="{PATH_CONTROLLER}/usuario">Usuarios</a></li>
+                        <li class="divider"></li>
+                        <li class="nav-header">Nav header</li>
+                        <li><a href="#">Separated link</a></li>
+                        <li><a href="#">One more separated link</a></li -->
+
+                    </ul>
+                </li>
+
+                <!-- Cadastro -->
+                <li class="dropdown {Global_active_cadastro}">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <i class="icon-th-list icon-white"></i>&nbsp;Cadastro<b class="caret"></b>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li {Global_li_active_medico}><a href="{PATH_CONTROLLER}/medico">Médico</a></li>
+                        <li {Global_li_active_funcionario}><a href="{PATH_CONTROLLER}/funcionario">Funcionário</a></li>
+                        <li {Global_li_active_setor}><a href="{PATH_CONTROLLER}/setor">Setor</a></li>
+                        <li {Global_li_active_funcao}><a href="{PATH_CONTROLLER}/funcao">Função</a></li>
+                    </ul>
+                </li>
+                
+                <!-- Atendimento -->
+                <li class="dropdown {Global_active_atendimento}">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <i class="icon-th-list icon-white"></i>&nbsp;Atendimento<b class="caret"></b>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li {Global_li_active_fichaclinica}><a href="{PATH_CONTROLLER}/fichaclinica">Ficha Clinica</a></li>
+
+                        <li class="divider"></li>
+                        <li {Global_li_active_marcarconsulta}><a href="{PATH_CONTROLLER}/marcarconsulta">Marcar Consultas</a></li>
+                        <li {Global_li_active_consultamarcadas}><a href="{PATH_CONTROLLER}/consultamarcadas">Consultas para Atendimento</a></li>
+                        <li {Global_li_active_historicoconsulta}><a href="{PATH_CONTROLLER}/consultasarquivada">Consultas Arquivadas</a></li>
+                        <li class="divider"></li>
+                        <li {Global_li_active_lixeira}><a href="{PATH_CONTROLLER}/lixeira">Lixeira</a></li>
+                    </ul>
+                </li>
+                
+                <!-- Crachás 
+                <li class="dropdown {Global_active_crachas}">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <i class="icon-th-list icon-white"></i>&nbsp;Chachás<b class="caret"></b>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li {Global_li_active_selecionarcracha}><a href="{PATH_CONTROLLER}/selecionarcracha">Selecionar Crachá</a></li>
+                        <li {Global_li_active_gerarcrachas}><a href="{PATH_CONTROLLER}/gerarcrachas">Gerar Crachás</a></li>
+                    </ul>
+                </li>
+                -->
+
+              
+            </ul>
+        </div><!--/.nav-collapse -->
+    </div>
+</div>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<!-- saved from url=(0050)http://getbootstrap.com/2.3.2/examples/signin.html -->
+<html lang="pt-BR"><head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta charset="utf-8">
+        <title>{TITULO}</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="">
+        <meta name="author" content="">
+
+        <!-- Le styles -->
+        <link href="{CSS}bootstrap.css" rel="stylesheet">
+        <style type="text/css">
+            body {
+                padding-top: 40px;
+                padding-bottom: 40px;
+                background-color: #f5f5f5;
+            }
+
+            .form-signin {
+                max-width: 300px;
+                padding: 19px 29px 29px;
+                margin: 0 auto 20px;
+                background-color: #fff;
+                border: 1px solid #e5e5e5;
+                -webkit-border-radius: 5px;
+                -moz-border-radius: 5px;
+                border-radius: 5px;
+                -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.05);
+                -moz-box-shadow: 0 1px 2px rgba(0,0,0,.05);
+                box-shadow: 0 1px 2px rgba(0,0,0,.05);
+            }
+            .form-signin .form-signin-heading,
+            .form-signin .checkbox {
+                margin-bottom: 10px;
+            }
+            .form-signin input[type="text"],
+            .form-signin input[type="password"] {
+                font-size: 16px;
+                height: auto;
+                margin-bottom: 15px;
+                padding: 7px 9px;
+            }
+
+        </style>
+        <link href="{CSS}bootstrap-responsive.css" rel="stylesheet">
+
+        <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+        <!--[if lt IE 9]>
+          <script src="../assets/js/html5shiv.js"></script>
+        <![endif]-->
+
+        <!-- Fav and touch icons -->
+        <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://getbootstrap.com/2.3.2/assets/ico/apple-touch-icon-144-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://getbootstrap.com/2.3.2/assets/ico/apple-touch-icon-114-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://getbootstrap.com/2.3.2/assets/ico/apple-touch-icon-72-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" href="http://getbootstrap.com/2.3.2/assets/ico/apple-touch-icon-57-precomposed.png">
+        <link rel="shortcut icon" href="http://getbootstrap.com/2.3.2/assets/ico/favicon.png">
+    </head>
+
+    <body>
+
+        <div class="container">
+
+            <form class="form-signin" action="{PATH_CONTROLLER}/verificaDadosLogin" method="post" name="login" id="login">
+                <center><img src="{IMG}144.jpg" class="img-circle"></center>
+                <div class="control-group  {Global_erro_login}">
+                    <label class="control-label" for="inputError">Login</label>
+                    <input type="text" name="usuario" class="input-block-level" value="{Global_login}" placeholder="Nome de usuário">
+                </div>
+                <div class="control-group {Global_erro_senha}">
+                    <label class="control-label" for="inputError">Senha</label>
+                    <input type="password" name="senha" class="input-block-level" value="{Global_password}" placeholder="Senha">
+                    <!-- label class="checkbox">
+                        <input type="checkbox" value="remember-me"> Remember me
+                    </label  -->
+                </div>
+                <button class="btn btn-success " type="submit">Entrar</button>
+            </form>
+
+        </div> <!-- /container -->
+
+        <!-- Le javascript
+        ================================================== -->
+        <!-- Placed at the end of the document so the pages load faster -->
+        <script src="{JS}jquery.js"></script>
+        <script src="{JS}bootstrap-transition.js"></script>
+        <script src="{JS}bootstrap-alert.js"></script>
+        <script src="{JS}bootstrap-modal.js"></script>
+        <script src="{JS}bootstrap-dropdown.js"></script>
+        <script src="{JS}bootstrap-scrollspy.js"></script>
+        <script src="{JS}bootstrap-tab.js"></script>
+        <script src="{JS}bootstrap-tooltip.js"></script>
+        <script src="{JS}bootstrap-popover.js"></script>
+        <script src="{JS}bootstrap-button.js"></script>
+        <script src="{JS}bootstrap-collapse.js"></script>
+        <script src="{JS}bootstrap-carousel.js"></script>
+        <script src="{JS}bootstrap-typeahead.js"></script>
+
+    </body>
+</html>
+
+
+
+

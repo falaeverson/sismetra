@@ -1,0 +1,689 @@
+<!-- Mapa de navegação -->
+<ul class="breadcrumb">
+    <li><a href="{PATH_CONTROLLER}">Home</a> <span class="divider">/</span></li>
+    <li><a href="{PATH_ACTION}">Atendimento</a> <span class="divider">/</span></li>
+    <li><a href="{PATH_ACTION}">Consultas</a> <span class="divider">/</span></li>
+    <li><a href="{PATH_ACTION}">Lista de Consultas</a> <span class="divider">/</span></li>
+    <li><a href="{Global_voltar_pra_list}">Ficha Clínica</a> <span class="divider">/</span></li>
+    <li class="active">{Global_map}</li>
+</ul>
+
+<!-- inicio do conteudo -->
+<div class="container">
+    <script type="text/javascript">
+        $(function() {
+            // evento do botao
+            $("#enviar").click(function() {
+                $(".formulario").fadeOut("slow");// acutando o div de formulario
+                beforeSend:$(".carregando").fadeIn("slow");// exibindo a div carregando
+                // pegando variaveis
+                var origem = $("#origem").val();
+                var id_fic = $("#id_fic").val();
+                var anamnese = $("#anamnese").val();
+                var ficha_data_hemo = $("#ficha_data_hemo").val();
+                var ficha_valor_hemo = $("#ficha_valor_hemo").val();
+                var ficha_situ_hemo = $("#ficha_situ_hemo").val();
+                var ficha_data_coles = $("#ficha_data_coles").val();
+                var ficha_valor_coles = $("#ficha_valor_coles").val();
+                var ficha_situ_coles = $("#ficha_situ_coles").val();
+                var ficha_data_trig = $("#ficha_data_trig").val();
+                var ficha_valor_trig = $("#ficha_valor_trig").val();
+                var ficha_situ_trig = $("#ficha_situ_trig").val();
+                var ficha_data_glic = $("#ficha_data_glic").val();
+                var ficha_valor_glic = $("#ficha_valor_glic").val();
+                var ficha_situ_glic = $("#ficha_situ_glic").val();
+                var ficha_data_clsa = $("#ficha_data_clsa").val();
+                var ficha_valor_clsa = $("#ficha_valor_clsa").val();
+                var ficha_situ_clsa = $("#ficha_situ_clsa").val();
+                var ficha_data_prfe = $("#ficha_data_prfe").val();
+                var ficha_valor_prfe = $("#ficha_valor_prfe").val();
+                var ficha_situ_prfe = $("#ficha_situ_prfe").val();
+                var ficha_data_smur = $("#ficha_data_smur").val();
+                var ficha_valor_smur = $("#ficha_valor_smur").val();
+                var ficha_situ_smur = $("#ficha_situ_smur").val();
+                var ficha_data_sohe = $("#ficha_data_sohe").val();
+                var ficha_valor_sohe = $("#ficha_valor_sohe").val();
+                var ficha_situ_sohe = $("#ficha_situ_sohe").val();
+                var ficha_data_soto = $("#ficha_data_soto").val();
+                var ficha_valor_soto = $("#ficha_valor_soto").val();
+                var ficha_situ_soto = $("#ficha_situ_soto").val();
+                var ficha_data_rxtp = $("#ficha_data_rxtp").val();
+                var ficha_valor_rxtp = $("#ficha_valor_rxtp").val();
+                var ficha_situ_rxtp = $("#ficha_situ_rxtp").val();
+                var ficha_data_rxcl = $("#ficha_data_rxcl").val();
+                var ficha_valor_rxcl = $("#ficha_valor_rxcl").val();
+                var ficha_situ_rxcl = $("#ficha_situ_rxcl").val();
+                var ficha_data_rxto = $("#ficha_data_rxto").val();
+                var ficha_valor_rxto = $("#ficha_valor_rxto").val();
+                var ficha_situ_rxto = $("#ficha_situ_rxto").val();
+                var ficha_data_ecg = $("#ficha_data_ecg").val();
+                var ficha_valor_ecg = $("#ficha_valor_ecg").val();
+                var ficha_situ_ecg = $("#ficha_situ_ecg").val();
+                var ficha_data_eeg = $("#ficha_data_eeg").val();
+                var ficha_valor_eeg = $("#ficha_valor_eeg").val();
+                var ficha_situ_eeg = $("#ficha_situ_eeg").val();
+                var ficha_data_audi = $("#ficha_data_audi").val();
+                var ficha_valor_audi = $("#ficha_valor_audi").val();
+                var ficha_situ_audi = $("#ficha_situ_audi").val();
+                var ficha_data_vdrl = $("#ficha_data_vdrl").val();
+                var ficha_valor_vdrl = $("#ficha_valor_vdrl").val();
+                var ficha_situ_vdrl = $("#ficha_situ_vdrl").val();
+                var ficha_data_ava_ofta = $("#ficha_data_ava_ofta").val();
+                var ficha_valor_ava_ofta = $("#ficha_valor_ava_ofta").val();
+                var ficha_situ_ava_ofta = $("#ficha_situ_ava_ofta").val();
+                var ficha_data_acu_visu = $("#ficha_data_acu_visu").val();
+                var ficha_valor_acu_visu = $("#ficha_valor_acu_visu").val();
+                var ficha_situ_acu_visu = $("#ficha_situ_acu_visu").val();
+                var ficha_data_ava_card = $("#ficha_data_ava_card").val();
+                var ficha_valor_ava_card = $("#ficha_valor_ava_card").val();
+                var ficha_situ_ava_card = $("#ficha_situ_ava_card").val();
+                var ficha_data_ava_espe = $("#ficha_data_ava_espe").val();
+                var ficha_valor_ava_espe = $("#ficha_valor_ava_espe").val();
+                var ficha_situ_ava_espe = $("#ficha_situ_ava_espe").val();
+                
+
+                // postando dados
+                $.post("{PATH_ACTION}/?pagina=salve", {
+                    origem: origem, id_fic: id_fic, anamnese: anamnese, 
+                    ficha_data_hemo: ficha_data_hemo, ficha_valor_hemo: ficha_valor_hemo, ficha_situ_hemo: ficha_situ_hemo, 
+                    ficha_data_coles: ficha_data_coles, ficha_valor_coles: ficha_valor_coles, ficha_situ_coles: ficha_situ_coles,
+                    ficha_data_trig: ficha_data_trig, ficha_valor_trig: ficha_valor_trig, ficha_situ_trig: ficha_situ_trig, 
+                    ficha_data_glic: ficha_data_glic, ficha_valor_glic: ficha_valor_glic, ficha_situ_glic: ficha_situ_glic,
+                    ficha_data_clsa: ficha_data_clsa, ficha_valor_clsa: ficha_valor_clsa, ficha_situ_clsa: ficha_situ_clsa, 
+                    ficha_data_prfe: ficha_data_prfe, ficha_valor_prfe: ficha_valor_prfe, ficha_situ_prfe: ficha_situ_prfe, 
+                    ficha_data_smur: ficha_data_smur, ficha_valor_smur: ficha_valor_smur, ficha_situ_smur: ficha_situ_smur,
+                    ficha_data_sohe: ficha_data_sohe, ficha_valor_sohe: ficha_valor_sohe, ficha_situ_sohe: ficha_situ_sohe,
+                    ficha_data_soto: ficha_data_soto, ficha_valor_soto: ficha_valor_soto, ficha_situ_soto: ficha_situ_soto,
+                    ficha_data_rxtp: ficha_data_rxtp, ficha_valor_rxtp: ficha_valor_rxtp, ficha_situ_rxtp: ficha_situ_rxtp,
+                    ficha_data_rxcl: ficha_data_rxcl, ficha_valor_rxcl: ficha_valor_rxcl, ficha_situ_rxcl: ficha_situ_rxcl,
+                    ficha_data_rxto: ficha_data_rxto, ficha_valor_rxto: ficha_valor_rxto, ficha_situ_rxto: ficha_situ_rxto,
+                    ficha_data_ecg: ficha_data_ecg, ficha_valor_ecg: ficha_valor_ecg, ficha_situ_ecg: ficha_situ_ecg,
+                    ficha_data_eeg: ficha_data_eeg, ficha_valor_eeg: ficha_valor_eeg, ficha_situ_eeg: ficha_situ_eeg,
+                    ficha_data_audi: ficha_data_audi, ficha_valor_audi: ficha_valor_audi, ficha_situ_audi: ficha_situ_audi,
+                    ficha_data_vdrl: ficha_data_vdrl, ficha_valor_vdrl: ficha_valor_vdrl, ficha_situ_vdrl: ficha_situ_vdrl,
+                    ficha_data_ava_ofta: ficha_data_ava_ofta, ficha_valor_ava_ofta: ficha_valor_ava_ofta, ficha_situ_ava_ofta: ficha_situ_ava_ofta,
+                    ficha_data_acu_visu: ficha_data_acu_visu, ficha_valor_acu_visu: ficha_valor_acu_visu, ficha_situ_acu_visu: ficha_situ_acu_visu,
+                    ficha_data_ava_card: ficha_data_ava_card, ficha_valor_ava_card: ficha_valor_ava_card, ficha_situ_ava_card: ficha_situ_ava_card,
+                    ficha_data_ava_espe: ficha_data_ava_espe, ficha_valor_ava_espe: ficha_valor_ava_espe, ficha_situ_ava_espe: ficha_situ_ava_espe
+                }, function(pegar_dados) {
+                    complete:$(".carregando").fadeOut("slow"); // acutando div carregando
+                    $(".retorno").fadeIn("slow").html(pegar_dados); // pegando dados de retorno e exibindo div retorno
+                    $(".formulario").fadeIn("slow");// acutando o div de formulario
+                    // evento do baotao voltar
+                    $("#fechar").click(function() {
+                        $(".retorno").fadeOut("slow"); // acutando a div retorno
+                        //$(".formulario").fadeIn("slow");// exibindo formulario
+                    });
+                });
+            });
+        });
+    </script>
+
+
+    <div class="carregando"><img src="{IMG}ajax-loader.gif" alt="" /><br />Aguarde, Carregando...</div>
+    <div class="retorno"></div>
+
+    <div class="formulario">
+
+        <input type="hidden" name="origem" id="origem" value="{Global_origem_edit}" />
+        <input type="hidden" name="id_fic" id="id_fic" value="{Global_codigo}" />
+
+        <div class="tabbable tabs-left"> <!-- Only required for left/right tabs -->
+            <ul class="nav nav-tabs">
+                <li class="active"><a href="#tab1" data-toggle="tab">Identificação</a></li>
+                <li><a href="#tab2" data-toggle="tab">Atendimento</a></li>
+                <li><a href="#tab3" data-toggle="tab">Anamnese</a></li>
+                <li><a href="#tab4" data-toggle="tab">Exames Complementáres</a></li>
+            </ul>
+            <div class="tab-content">
+
+                <!-- Identificação -->
+                <div class="tab-pane active" id="tab1">
+                    <div class="row">
+                        <div class="span2">
+                            <label>CODIGO:</label> 
+                            <input id="codigo" value="{Global_codigo}" class="span2" type="text" disabled>
+                        </DIV>
+                        <div class="span2">
+                            <label>DRT:</label> 
+                            <input id="drt" value="{Global_drt}" class="span2" type="text" disabled>
+                        </div>
+                        <div class="span5">
+                            <label>NOME:</label> 
+                            <input id="nome" value="{Global_nome}" class="span5" type="text" disabled>
+                        </div>
+                        <div class="span3">
+                            <label>CPF:</label> 
+                            <input id="cpf" value="{Global_cpf}" class="span3" type="text" disabled>
+                        </div>
+                        <div class="span2">
+                            <label>RG:</label> 
+                            <input id="rg" value="{Global_rg}" class="span2" type="text" disabled>
+                        </div>
+                        <div class="span2">
+                            <label>S.CIVIL:</label> 
+                            <input id="estado_civil" value="{Global_estado_civil}" class="span2" type="text" disabled>
+                        </div>
+                        <div class="span2">
+                            <label>SEXO:</label>
+                            <input id="sexo" value="{Global_sexo}" class="span2" type="text" disabled>
+                        </div>
+                        <div class="span1">
+                            <label>IDADE:</label> 
+                            <input id="idade" value="{Global_idade}" class="span1" type="text" disabled>
+                        </div>
+                        <div class="span4">
+                            <label>SETOR:</label> 
+                            <input id="setor" value="{Global_setor}" class="span4" type="text" disabled>
+                        </div>
+                        <div class="span4">
+                            <label>FUNCAO:</label> 
+                            <input id="funcao" value="{Global_funcao}" class="span4" type="text" disabled>
+                        </div>
+
+                        <div class="span4">
+                            <label>D.H ATENDIMENTO:</label> 
+                            <input id="dt_atendimento" value="{Global_dt_atendimento}" class="span4" type="text" disabled>
+                        </div>
+                        <div class="span5">
+                            <label>MEDICO RESPONSAL:</label> 
+                            <input id="medico" value="{Global_medico}" class="span5" type="text" disabled>
+                        </div>
+
+
+                    </div>
+                </div>
+
+                <!-- Atendimento -->
+                <div class="tab-pane" id="tab2">
+                    <div class="span3">
+                        <label>TIPO DE EXAME:</label>
+                        <input value="{Global_tipo_exame}" class="span3" type="text" disabled>
+                    </div>
+                    <div class="span1">
+                        <label>PA:</label> 
+                        <input value="{Global_pa}" class="span1" type="text" disabled>
+                    </div>
+                    <div class="span1">
+                        <label>PESO:</label> 
+                        <input value="{Global_peso}" class="span1" type="text" disabled>
+                    </div>
+                    <div class="span1">
+                        <label>ALTURA:</label> 
+                        <input value="{Global_altura}" class="span1" type="text" disabled>
+                    </div>
+                    <div class="span1">
+                        <label>IMC:</label> 
+                        <input value="{Global_imc}" class="span1" type="text" disabled>
+                    </div>
+                    <div class="span4">
+                        <label>OBESIDADE:</label> 
+                        <input value="{Global_obesidade}" class="span4" type="text" disabled>
+                    </div>
+                </div>
+
+                <!-- Anamnese -->
+                <div class="tab-pane" id="tab3">
+                    <label>ANAMNESE:</label>
+                    <textarea id="anamnese" class="span8" rows="10">{Global_anamnese}</textarea>
+                </div>
+
+                <!-- 
+                Exames Complementares 
+                -->
+                <div class="tab-pane" id="tab4">
+                    <table class="table table-condensed table-bordered table-striped">
+                        <thead>
+                            <tr>
+                                <th class="span3">EXAME:</th>
+                                <th class="span2">DATA:</th>
+                                <th class="span2">RESULTA:</th>
+                                <th class="span2">SITUAÇÃO:</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            <tr>
+                                <td>Hemograma</td>  
+                                <td>
+                                    <div id="datetime1" class="input-append date">
+                                        <input id="ficha_data_hemo" value="{Global_ficha_data_hemo}" 
+                                               class="input-small" type="text" maxlength="10"
+                                               onkeypress="mascara(this, '##/##/####');
+            return SomenteNumero(event)">
+                                        <span class="add-on"><i class="icon-calendar"></i></span>
+                                    </div>
+                                </td>  
+                                <td>
+                                    <input id="ficha_valor_hemo" value="{Global_ficha_valor_hemo}" class="span2" type="text" placeholder="">
+                                </td>  
+                                <td>
+                                    <select id="ficha_situ_hemo" class="span2">
+                                        {Global_ficha_situ_hemo}
+                                    </select>
+                                </td>  
+                            </tr>
+
+                            <tr>
+                                <td>Colester&oacute;l Total</td>  
+                                <td>
+                                    <div id="datetime2" class="input-append date">
+                                        <input id="ficha_data_coles" value="{Global_ficha_data_coles}" 
+                                               class="input-small" type="text" maxlength="10"
+                                               onkeypress="mascara(this, '##/##/####');
+            return SomenteNumero(event)">
+                                        <span class="add-on"><i class="icon-calendar"></i></span>
+                                    </div>
+                                </td>  
+                                <td>
+                                    <input id="ficha_valor_coles" value="{Global_ficha_valor_coles}" class="span2" type="text" placeholder="">
+                                </td>  
+                                <td>
+                                    <select id="ficha_situ_coles" class="span2">
+                                        {Global_ficha_situ_coles}
+                                    </select>
+                                </td>  
+                            </tr>
+
+                            <tr>
+                                <td>Triglicerides</td>  
+                                <td>
+                                    <div id="datetime3" class="input-append date">
+                                        <input id="ficha_data_trig" value="{Global_ficha_data_trig}" 
+                                               class="input-small" type="text" maxlength="10"
+                                               onkeypress="mascara(this, '##/##/####');
+            return SomenteNumero(event)">
+                                        <span class="add-on"><i class="icon-calendar"></i></span>
+                                    </div>
+                                </td>  
+                                <td>
+                                    <input id="ficha_valor_trig" value="{Global_ficha_valor_trig}" class="span2" type="text" placeholder="">
+                                </td>  
+                                <td>
+                                    <select id="ficha_situ_trig" class="span2">
+                                        {Global_ficha_situ_trig}
+                                    </select>
+                                </td>  
+                            </tr>
+
+                            <tr>
+                                <td>Glicemia</td>  
+                                <td>
+                                    <div id="datetime4" class="input-append date">
+                                        <input id="ficha_data_glic" value="{Global_ficha_data_glic}" 
+                                               class="input-small" type="text" maxlength="10"
+                                               onkeypress="mascara(this, '##/##/####');
+            return SomenteNumero(event)">
+                                        <span class="add-on"><i class="icon-calendar"></i></span>
+                                    </div>
+                                </td>  
+                                <td>
+                                    <input id="ficha_valor_glic" value="{Global_ficha_valor_glic}" class="span2" type="text" placeholder="">
+                                </td>  
+                                <td>
+                                    <select id="ficha_situ_glic" class="span2">
+                                        {Global_ficha_situ_glic}
+                                    </select>
+                                </td>  
+                            </tr>
+
+                            <tr>
+                                <td>Class. Sanginea</td>  
+                                <td>
+                                    <div id="datetime5" class="input-append date">
+                                        <input id="ficha_data_clsa" value="{Global_ficha_data_clsa}" 
+                                               class="input-small" type="text" maxlength="10"
+                                               onkeypress="mascara(this, '##/##/####');
+            return SomenteNumero(event)">
+                                        <span class="add-on"><i class="icon-calendar"></i></span>
+                                    </div>
+                                </td>  
+                                <td>
+                                    <input id="ficha_valor_clsa" value="{Global_ficha_valor_clsa}" class="span2" type="text" placeholder="">
+                                </td>  
+                                <td>
+                                    <select id="ficha_situ_clsa" class="span2">
+                                        {Global_ficha_situ_clsa}
+                                    </select>
+                                </td>  
+                            </tr>
+
+                            <tr>
+                                <td>Par. de Fezes</td>  
+                                <td>
+                                    <div id="datetime6" class="input-append date">
+                                        <input id="ficha_data_prfe" value="{Global_ficha_data_prfe}" 
+                                               class="input-small" type="text" maxlength="10"
+                                               onkeypress="mascara(this, '##/##/####');
+            return SomenteNumero(event)">
+                                        <span class="add-on"><i class="icon-calendar"></i></span>
+                                    </div>
+                                </td>  
+                                <td>
+                                    <input id="ficha_valor_prfe" value="{Global_ficha_valor_prfe}" class="span2" type="text" placeholder="">
+                                </td>  
+                                <td>
+                                    <select id="ficha_situ_prfe" class="span2">
+                                        {Global_ficha_situ_prfe}
+                                    </select>
+                                </td>  
+                            </tr>
+
+                            <tr>
+                                <td>Sum&aacute;rio de Urina</td>  
+                                <td>
+                                    <div id="datetime7" class="input-append date">
+                                        <input id="ficha_data_smur" value="{Global_ficha_data_smur}" 
+                                               class="input-small" type="text" maxlength="10"
+                                               onkeypress="mascara(this, '##/##/####');
+            return SomenteNumero(event)">
+                                        <span class="add-on"><i class="icon-calendar"></i></span>
+                                    </div>
+                                </td>  
+                                <td>
+                                    <input id="ficha_valor_smur" value="{Global_ficha_valor_smur}" class="span2" type="text" placeholder="">
+                                </td>  
+                                <td>
+                                    <select id="ficha_situ_smur" class="span2">
+                                        {Global_ficha_situ_smur}
+                                    </select>
+                                </td>  
+                            </tr>
+
+                            <tr>
+                                <td>Sorol. Hepatite IGG/IGM</td>  
+                                <td>
+                                    <div id="datetime8" class="input-append date">
+                                        <input id="ficha_data_sohe" value="{Global_ficha_data_sohe}" 
+                                               class="input-small" type="text" maxlength="10"
+                                               onkeypress="mascara(this, '##/##/####');
+            return SomenteNumero(event)">
+                                        <span class="add-on"><i class="icon-calendar"></i></span>
+                                    </div>
+                                </td>  
+                                <td>
+                                    <input id="ficha_valor_sohe" value="{Global_ficha_valor_sohe}" class="span2" type="text" placeholder="">
+                                </td>  
+                                <td>
+                                    <select id="ficha_situ_sohe" class="span2">
+                                        {Global_ficha_situ_sohe}
+                                    </select>
+                                </td>  
+                            </tr>
+
+                            <tr>
+                                <td>Sorol. Toxoplasmose</td>  
+                                <td>
+                                    <div id="datetime9" class="input-append date">
+                                        <input id="ficha_data_soto" value="{Global_ficha_data_soto}" 
+                                               class="input-small" type="text" maxlength="10"
+                                               onkeypress="mascara(this, '##/##/####');
+            return SomenteNumero(event)">
+                                        <span class="add-on"><i class="icon-calendar"></i></span>
+                                    </div>
+                                </td>  
+                                <td>
+                                    <input id="ficha_valor_soto" value="{Global_ficha_valor_soto}" class="span2" type="text" placeholder="">
+                                </td>  
+                                <td>
+                                    <select id="ficha_situ_soto" class="span2">
+                                        {Global_ficha_situ_soto}
+                                    </select>
+                                </td>  
+                            </tr>
+
+                            <tr>
+                                <td>RX do T&oacute;rax e Perfil</td>  
+                                <td>
+                                    <div id="datetime10" class="input-append date">
+                                        <input id="ficha_data_rxtp" value="{Global_ficha_data_rxtp}" 
+                                               class="input-small" type="text" maxlength="10"
+                                               onkeypress="mascara(this, '##/##/####');
+            return SomenteNumero(event)">
+                                        <span class="add-on"><i class="icon-calendar"></i></span>
+                                    </div>
+                                </td>  
+                                <td>
+                                    <input id="ficha_valor_rxtp" value="{Global_ficha_valor_rxtp}" class="span2" type="text" placeholder="">
+                                </td>  
+                                <td>
+                                    <select id="ficha_situ_rxtp" class="span2">
+                                        {Global_ficha_situ_rxtp}
+                                    </select>
+                                </td>  
+                            </tr>
+
+                            <tr>
+                                <td>RX da Coluna Lombar</td>  
+                                <td>
+                                    <div id="datetime11" class="input-append date">
+                                        <input id="ficha_data_rxcl" value="{Global_ficha_data_rxcl}" 
+                                               class="input-small" type="text" maxlength="10"
+                                               onkeypress="mascara(this, '##/##/####');
+            return SomenteNumero(event)">
+                                        <span class="add-on"><i class="icon-calendar"></i></span>
+                                    </div>
+                                </td>  
+                                <td>
+                                    <input id="ficha_valor_rxcl" value="{Global_ficha_valor_rxcl}" class="span2" type="text" placeholder="">
+                                </td>  
+                                <td>
+                                    <select id="ficha_situ_rxcl" class="span2">
+                                        {Global_ficha_situ_rxcl}
+                                    </select>
+                                </td>  
+                            </tr>
+
+                            <tr>
+                                <td>RX do T&oacute;rax</td>  
+                                <td>
+                                    <div id="datetime12" class="input-append date">
+                                        <input id="ficha_data_rxto" value="{Global_ficha_data_rxto}" 
+                                               class="input-small" type="text" maxlength="10"
+                                               onkeypress="mascara(this, '##/##/####');
+            return SomenteNumero(event)">
+                                        <span class="add-on"><i class="icon-calendar"></i></span>
+                                    </div>
+                                </td>  
+                                <td>
+                                    <input id="ficha_valor_rxto" value="{Global_ficha_valor_rxto}" class="span2" type="text" placeholder="">
+                                </td>  
+                                <td>
+                                    <select id="ficha_situ_rxto" class="span2">
+                                        {Global_ficha_situ_rxto}
+                                    </select>
+                                </td>  
+                            </tr>
+
+                            <tr>
+                                <td>ECG</td>  
+                                <td>
+                                    <div id="datetime13" class="input-append date">
+                                        <input id="ficha_data_ecg" value="{Global_ficha_data_ecg}" 
+                                               class="input-small" type="text" maxlength="10"
+                                               onkeypress="mascara(this, '##/##/####');
+            return SomenteNumero(event)">
+                                        <span class="add-on"><i class="icon-calendar"></i></span>
+                                    </div>
+                                </td>  
+                                <td>
+                                    <input id="ficha_valor_ecg" value="{Global_ficha_valor_ecg}" class="span2" type="text" placeholder="">
+                                </td>  
+                                <td>
+                                    <select id="ficha_situ_ecg" class="span2">
+                                        {Global_ficha_situ_ecg}
+                                    </select>
+                                </td>  
+                            </tr>
+
+                            <tr>
+                                <td>EEG</td>  
+                                <td>
+                                    <div id="datetime14" class="input-append date">
+                                        <input id="ficha_data_eeg" value="{Global_ficha_data_eeg}" 
+                                               class="input-small" type="text" maxlength="10"
+                                               onkeypress="mascara(this, '##/##/####');
+            return SomenteNumero(event)">
+                                        <span class="add-on"><i class="icon-calendar"></i></span>
+                                    </div>
+                                </td>  
+                                <td>
+                                    <input id="ficha_valor_eeg" value="{Global_ficha_valor_eeg}" class="span2" type="text" placeholder="">
+                                </td>  
+                                <td>
+                                    <select id="ficha_situ_eeg" class="span2">
+                                        {Global_ficha_situ_eeg}
+                                    </select>
+                                </td>  
+                            </tr>
+
+                            <tr>
+                                <td>Audiometria</td>  
+                                <td>
+                                    <div id="datetime15" class="input-append date">
+                                        <input id="ficha_data_audi" value="{Global_ficha_data_audi}" 
+                                               class="input-small" type="text" maxlength="10"
+                                               onkeypress="mascara(this, '##/##/####');
+            return SomenteNumero(event)">
+                                        <span class="add-on"><i class="icon-calendar"></i></span>
+                                    </div>
+                                </td>  
+                                <td>
+                                    <input id="ficha_valor_audi" value="{Global_ficha_valor_audi}" class="span2" type="text" placeholder="">
+                                </td>  
+                                <td>
+                                    <select id="ficha_situ_audi" class="span2">
+                                        {Global_ficha_situ_audi}
+                                    </select>
+                                </td>  
+                            </tr>
+
+                            <tr>
+                                <td>VDRL</td>  
+                                <td>
+                                    <div id="datetime16" class="input-append date">
+                                        <input id="ficha_data_vdrl" value="{Global_ficha_data_vdrl}" 
+                                               class="input-small" type="text" maxlength="10"
+                                               onkeypress="mascara(this, '##/##/####');
+            return SomenteNumero(event)">
+                                        <span class="add-on"><i class="icon-calendar"></i></span>
+                                    </div>
+                                </td>  
+                                <td>
+                                    <input id="ficha_valor_vdrl" value="{Global_ficha_valor_vdrl}" class="span2" type="text" placeholder="">
+                                </td>  
+                                <td>
+                                    <select id="ficha_situ_vdrl" class="span2">
+                                        {Global_ficha_situ_vdrl}
+                                    </select>
+                                </td>  
+                            </tr>
+
+                            <tr>
+                                <td>Avaliação Oftalmolágica</td>  
+                                <td>
+                                    <div id="datetime17" class="input-append date">
+                                        <input id="ficha_data_ava_ofta" value="{Global_ficha_data_ava_ofta}" 
+                                               class="input-small" type="text" maxlength="10"
+                                               onkeypress="mascara(this, '##/##/####');
+            return SomenteNumero(event)">
+                                        <span class="add-on"><i class="icon-calendar"></i></span>
+                                    </div>
+                                </td>  
+                                <td>
+                                    <input id="ficha_valor_ava_ofta" value="{Global_ficha_valor_ava_ofta}" class="span2" type="text" placeholder="">
+                                </td>  
+                                <td>
+                                    <select id="ficha_situ_ava_ofta" class="span2">
+                                        {Global_ficha_situ_ava_ofta}
+                                    </select>
+                                </td>  
+                            </tr>
+
+                            <tr>
+                                <td>Acuidade Visual</td>   
+                                <td>
+                                    <div id="datetime18" class="input-append date">
+                                        <input id="ficha_data_acu_visu" value="{Global_ficha_data_acu_visu}" 
+                                               class="input-small" type="text" maxlength="10"
+                                               onkeypress="mascara(this, '##/##/####');
+            return SomenteNumero(event)">
+                                        <span class="add-on"><i class="icon-calendar"></i></span>
+                                    </div>
+                                </td>  
+                                <td>
+                                    <input id="ficha_valor_acu_visu" value="{Global_ficha_valor_acu_visu}" class="span2" type="text" placeholder="">
+                                </td>  
+                                <td>
+                                    <select id="ficha_situ_acu_visu" class="span2">
+                                        {Global_ficha_situ_acu_visu}
+                                    </select>
+                                </td>  
+                            </tr>
+
+                            <tr>
+                                <td>Avaliação Cardíaca</td>  
+                                <td>
+                                    <div id="datetime19" class="input-append date">
+                                        <input id="ficha_data_ava_card" value="{Global_ficha_data_ava_card}" 
+                                               class="input-small" type="text" maxlength="10"
+                                               onkeypress="mascara(this, '##/##/####');
+            return SomenteNumero(event)">
+                                        <span class="add-on"><i class="icon-calendar"></i></span>
+                                    </div>
+                                </td>  
+                                <td>
+                                    <input id="ficha_valor_ava_card" value="{Global_ficha_valor_ava_card}" class="span2" type="text" placeholder="">
+                                </td>  
+                                <td>
+                                    <select id="ficha_situ_ava_card" class="span2">
+                                        {Global_ficha_situ_ava_card}
+                                    </select>
+                                </td>  
+                            </tr>
+
+                            <tr>
+                                <td>Avaliação Especialista</td>  
+                                <td>
+                                    <div id="datetime20" class="input-append date">
+                                        <input id="ficha_data_ava_espe" value="{Global_ficha_data_ava_espe}" 
+                                               class="input-small" type="text" maxlength="10"
+                                               onkeypress="mascara(this, '##/##/####');
+            return SomenteNumero(event)">
+                                        <span class="add-on"><i class="icon-calendar"></i></span>
+                                    </div>
+                                </td>  
+                                <td>
+                                    <input id="ficha_valor_ava_espe" value="{Global_ficha_valor_ava_espe}" class="span2" type="text" placeholder="">
+                                </td>  
+                                <td>
+                                    <select id="ficha_situ_ava_espe" class="span2">
+                                        {Global_ficha_situ_ava_espe}
+                                    </select>
+                                </td>  
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>  
+
+        <div class="form-actions well-small text-center navbar-fixed-bottom">
+            {Global_btnAnt}
+            <button type="button" onclick="window.location = '{Global_voltar_pra_list}'" class="btn btn-info">
+                <i class="icon-th-list icon-white"></i>&nbsp;Listar</button>
+            <!-- button type="button" class="btn btn-danger">
+                <i class="icon-ban-circle icon-white"></i>&nbsp;Cancelar</button   -->
+            <button type="button" class="btn btn-success" id="enviar">
+                <i class="icon-ok icon-white"></i>&nbsp;Salvar</button>
+            <button type="button" class="btn btn-inverse" onclick="javascript:abrir('{PATH_CONTROLLER}/relatorio/?p={Global_relIdConsulta}')">
+                <i class="icon-print icon-white"></i>&nbsp;Imprimir</button>
+
+            {Global_btnAtu}
+            {Global_btnPro}
+        </div>
+
+    </div>
+</div> 

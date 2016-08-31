@@ -1,0 +1,170 @@
+
+{View_head}
+
+<body>
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        {View_topo}
+    </div>
+
+
+    <!-- inicio do container geral -->
+    <div class="container">
+
+        <!-- Mapa de navegação -->
+        <ul class="breadcrumb">
+            <!-- li><a href="{PATH_CONTROLLER}">Home</a> <span class="divider">/</span></li -->
+            <li class="active">Home</li>
+        </ul>
+        <!-- GRAFICOS -->
+
+
+        <!-- Carregar a API do google -->
+        <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+
+        <!-- Preparar a geracao do grafico -->
+        <script type="text/javascript">
+
+            // Carregar a API de visualizacao e os pacotes necessarios.
+            google.load('visualization', '1.0', {'packages': ['corechart']});
+            // Especificar um callback para ser executado quando a API for carregada.
+            google.setOnLoadCallback(desenharGrafico);
+            google.setOnLoadCallback(desenharGraficoSexo);
+            google.setOnLoadCallback(consultaMulherHomen);
+            google.setOnLoadCallback(consultaAtendidaNaoAtendida);
+
+            /**
+             * Funcao que preenche os dados do grafico de cadastro de funcionarios
+             */
+            function desenharGrafico() {
+                // Montar os dados usados pelo grafico
+                var dados = new google.visualization.DataTable();
+                dados.addColumn('string', 'Gênero');
+                dados.addColumn('number', 'Quantidades');
+                dados.addRows([
+                        ['Funcionários Demitídos', {Global_funcionarioDemi}],
+                        ['Funcionários Ativo', {Global_funcionarioAtivo}],
+                ]);
+                        // Configuracoes do grafico
+                        var config = {
+                    'title': 'Funcionarios Cadastrads',
+                    'width': 600,
+                    'height': 500
+                };
+                // Instanciar o objeto de geracao de graficos de pizza,
+                // informando o elemento HTML onde o grafico sera desenhado.
+                var chart = new google.visualization.PieChart(document.getElementById('area_grafico'));
+                // Desenhar o grafico (usando os dados e as configuracoes criadas)
+                chart.draw(dados, config);
+            }
+
+            /**
+             * Funcao que preenche os dados do grafico do sexo dos funcionario
+             */
+            function desenharGraficoSexo() {
+                // Montar os dados usados pelo grafico
+                var dados = new google.visualization.DataTable();
+                dados.addColumn('string', 'Gênero');
+                dados.addColumn('number', 'Quantidades');
+                dados.addRows([
+                        ['Homens', {Global_funcionarioMasco}],
+                        ['Mulheres', {Global_funcionarioFemini}],
+                ]);
+                        // Configuracoes do grafico
+                        var config = {
+                    'title': 'Sexo',
+                    'width': 600,
+                    'height': 500
+                };
+                // Instanciar o objeto de geracao de graficos de pizza,
+                // informando o elemento HTML onde o grafico sera desenhado.
+                var chart = new google.visualization.PieChart(document.getElementById('area_grafico_sexo'));
+                // Desenhar o grafico (usando os dados e as configuracoes criadas)
+                chart.draw(dados, config);
+            }
+
+            /**
+             * Funcao que preenche os dados do grafico de consultas mulher homen
+             */
+            function consultaMulherHomen() {
+                var data = google.visualization.arrayToDataTable([
+                    ['Ano', 'Consultas', 'Homens', 'Mulheres'],
+                    ['Ano 2013', 1000, 400, 300]
+
+                ]);
+
+                var options = {
+                    title: 'Estatistica',
+                    //hAxis: {title: 'Year', titleTextStyle: {color: 'red'}},
+                    'width': 600,
+                    'height': 500
+                };
+                var chart = new google.visualization.ColumnChart(document.getElementById('barraConsultasMH'));
+                chart.draw(data, options);
+            }
+
+            /**
+             * Funcao que preenche os dados do grafico de consultas atendidas e não atendidas
+             */
+            function consultaAtendidaNaoAtendida() {
+                var data = google.visualization.arrayToDataTable([
+                    ['Ano', 'Consultas', 'Atendidas', 'Não Atendidos'],
+                    ['Jen', 1000, 400, 100],
+                    ['Fev', 1170, 460, 200],
+                    ['Mar', 660, 1120, 300],
+                    ['Abr', 1130, 510, 400],
+                    ['Mai', 1230, 520, 500],
+                    ['Jun', 1330, 530, 600],
+                    ['Jul', 1430, 540, 700],
+                    ['Ago', 1530, 550, 800],
+                    ['Set', 1630, 560, 900],
+                    ['Out', 1730, 570, 110],
+                    ['Nov', 1830, 580, 120],
+                    ['Dez', 1930, 590, 130],
+                ]);
+
+                var options = {
+                    title: 'Estatistica Anual de Atendimento',
+                    //hAxis: {title: 'Year', titleTextStyle: {color: 'red'}},
+                    'width': 600,
+                    'height': 500
+                };
+                var chart = new google.visualization.ColumnChart(document.getElementById('barraAtendidaNaoAtendida'));
+                chart.draw(data, options);
+            }
+        </script>
+
+        <div class="row-fluid">
+            <div class="span6">
+                <div id="area_grafico"></div>
+            </div>
+            <div class="span6">
+                <div id="area_grafico_sexo"></div>
+            </div>
+        </div>
+        <div class="row-fluid">
+            <div class="span6">
+                <div id="barraConsultasMH"></div>
+            </div>
+            <div class="span6">
+                <!-- div id="barraAtendidaNaoAtendida"></div -->
+            </div>
+        </div>
+
+
+
+
+
+
+
+        <!-- FIM DOS GRAFICOS -->    
+    </div> <!-- /container -->
+
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    {View_javascrip}
+
+
+</body>
+</html>

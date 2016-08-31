@@ -1,0 +1,205 @@
+<script src="{JS}bootstrap-transition.js"></script>
+<script src="{JS}bootstrap-alert.js"></script>
+<script src="{JS}bootstrap-modal.js"></script>
+<script src="{JS}bootstrap-dropdown.js"></script>
+<script src="{JS}bootstrap-scrollspy.js"></script>
+<script src="{JS}bootstrap-tab.js"></script>
+<script src="{JS}bootstrap-tooltip.js"></script>
+<script src="{JS}bootstrap-popover.js"></script>
+<script src="{JS}bootstrap-button.js"></script>
+<script src="{JS}bootstrap-collapse.js"></script>
+<script src="{JS}bootstrap-carousel.js"></script>
+<script src="{JS}bootstrap-typeahead.js"></script>
+<script src="{JS}bootstrap-datetimepicker.min.js"></script>  <!-- para o datapick -->
+<script src="{JS}bootstrap-datetimepicker.pt-BR.js"></script><!-- para o datapick -->
+
+
+<script type="text/javascript">
+    function abrir(URL) {
+        var width = 800;
+        var height = 550;
+        var left = 0;
+        var top = 0;
+        window.open(
+                URL,
+                'janela',
+                'width=' + width + ', \n\
+                height=' + height + ', \n\
+                top=' + top + ', \n\
+                left=' + left + ', \n\
+                scrollbars=yes, \n\
+                status=no, \n\
+                toolbar=no, \n\
+                location=no, \n\
+                directories=no, \n\
+                menubar=no, \n\
+                resizable=no, \n\
+                fullscreen=yes'
+                );
+    }
+
+    $('#datetime').datetimepicker({
+        format: 'dd/MM/yyyy',
+        //format: 'dd/MM/yyyy hh:mm:ss',
+        language: 'pt-BR'
+    });
+    $('#datetimepicker').datetimepicker({
+        //format: 'dd/MM/yyyy',
+        format: 'dd/MM/yyyy hh:mm',
+        language: 'pt-BR'
+    });
+    $('#datetimepicker2').datetimepicker({
+        format: 'dd/MM/yyyy',
+        //format: 'dd/MM/yyyy hh:mm:ss',
+        language: 'pt-BR'
+    });
+    $('#datetimepicker3').datetimepicker({
+        format: 'dd/MM/yyyy',
+        //format: 'dd/MM/yyyy hh:mm:ss',
+        language: 'pt-BR'
+    });
+
+    // Datas da ficha
+    $('#datetime1').datetimepicker({
+        format: 'dd/MM/yyyy',
+        //format: 'dd/MM/yyyy hh:mm:ss',
+        language: 'pt-BR'
+    });
+    $('#datetime2').datetimepicker({
+        format: 'dd/MM/yyyy',
+        //format: 'dd/MM/yyyy hh:mm:ss',
+        language: 'pt-BR'
+    });
+    $('#datetime3').datetimepicker({
+        format: 'dd/MM/yyyy',
+        //format: 'dd/MM/yyyy hh:mm:ss',
+        language: 'pt-BR'
+    });
+    $('#datetime4').datetimepicker({
+        format: 'dd/MM/yyyy',
+        //format: 'dd/MM/yyyy hh:mm:ss',
+        language: 'pt-BR'
+    });
+    $('#datetime5').datetimepicker({
+        format: 'dd/MM/yyyy',
+        //format: 'dd/MM/yyyy hh:mm:ss',
+        language: 'pt-BR'
+    });
+    $('#datetime6').datetimepicker({
+        format: 'dd/MM/yyyy',
+        //format: 'dd/MM/yyyy hh:mm:ss',
+        language: 'pt-BR'
+    });
+    $('#datetime7').datetimepicker({
+        format: 'dd/MM/yyyy',
+        //format: 'dd/MM/yyyy hh:mm:ss',
+        language: 'pt-BR'
+    });
+    $('#datetime8').datetimepicker({
+        format: 'dd/MM/yyyy',
+        //format: 'dd/MM/yyyy hh:mm:ss',
+        language: 'pt-BR'
+    });
+    $('#datetime9').datetimepicker({
+        format: 'dd/MM/yyyy',
+        //format: 'dd/MM/yyyy hh:mm:ss',
+        language: 'pt-BR'
+    });
+    $('#datetime10').datetimepicker({
+        format: 'dd/MM/yyyy',
+        //format: 'dd/MM/yyyy hh:mm:ss',
+        language: 'pt-BR'
+    });
+    $('#datetime11').datetimepicker({
+        format: 'dd/MM/yyyy',
+        //format: 'dd/MM/yyyy hh:mm:ss',
+        language: 'pt-BR'
+    });
+    $('#datetime12').datetimepicker({
+        format: 'dd/MM/yyyy',
+        //format: 'dd/MM/yyyy hh:mm:ss',
+        language: 'pt-BR'
+    });
+    $('#datetime13').datetimepicker({
+        format: 'dd/MM/yyyy',
+        //format: 'dd/MM/yyyy hh:mm:ss',
+        language: 'pt-BR'
+    });
+    $('#datetime14').datetimepicker({
+        format: 'dd/MM/yyyy',
+        //format: 'dd/MM/yyyy hh:mm:ss',
+        language: 'pt-BR'
+    });
+    $('#datetime15').datetimepicker({
+        format: 'dd/MM/yyyy',
+        //format: 'dd/MM/yyyy hh:mm:ss',
+        language: 'pt-BR'
+    });
+    $('#datetime16').datetimepicker({
+        format: 'dd/MM/yyyy',
+        //format: 'dd/MM/yyyy hh:mm:ss',
+        language: 'pt-BR'
+    });
+    $('#datetime17').datetimepicker({
+        format: 'dd/MM/yyyy',
+        //format: 'dd/MM/yyyy hh:mm:ss',
+        language: 'pt-BR'
+    });
+    $('#datetime18').datetimepicker({
+        format: 'dd/MM/yyyy',
+        //format: 'dd/MM/yyyy hh:mm:ss',
+        language: 'pt-BR'
+    });
+    $('#datetime19').datetimepicker({
+        format: 'dd/MM/yyyy',
+        //format: 'dd/MM/yyyy hh:mm:ss',
+        language: 'pt-BR'
+    });
+    $('#datetime20').datetimepicker({
+        format: 'dd/MM/yyyy',
+        //format: 'dd/MM/yyyy hh:mm:ss',
+        language: 'pt-BR'
+    });
+
+    // Criando dependencia de campos select   
+    $(document).ready(function() {
+        // Evento change no campo tipo  
+        $("select[name=setor]").change(function() {
+            $("select[name=funcao]").html('<option value="">Carregando...</option>');
+            $.post("{PATH_ACTION}/?pagina=select", {setor: $(this).val()},
+            function(valor) {
+                $("select[name=funcao]").html(valor);
+            }
+            );
+        });
+
+    });
+    // Macara dos capos peso e altura e Calculo de IMC
+    function mascara(src, mask) {
+        var i = src.value.length;
+        var saida = mask.substring(0, 1);
+        var texto = mask.substring(i);
+
+        if (texto.substring(0, 1) != saida)
+        {
+            src.value += texto.substring(0, 1);
+        }
+    }
+
+    function SomenteNumero(e) {
+        var tecla = (window.event) ? event.keyCode : e.which;
+        if ((tecla > 47 && tecla < 58))
+                return true;
+            else {
+                if (tecla == 8 || tecla == 0)
+                    return true;
+                else
+                    return false;
+            }
+        }
+        
+        
+
+</script>
+
+

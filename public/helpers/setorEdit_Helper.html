@@ -1,0 +1,84 @@
+<!-- Mapa de navegação -->
+<ul class="breadcrumb">
+    <li><a href="{PATH_CONTROLLER}">Home</a> <span class="divider">/</span></li>
+    <li><a href="{PATH_ACTION}">Cadastro</a> <span class="divider">/</span></li>
+    <li><a href="{PATH_ACTION}">Setor</a> <span class="divider">/</span></li>
+    <li><a href="{Global_voltar_pra_list}">Lista de Setores</a> <span class="divider">/</span></li>
+    <li class="active">{Global_map}</li>
+</ul>
+
+<!-- inicio do conteudo -->
+<div class="container">
+
+    <script type="text/javascript">
+        $(function() {
+            // evento do botao
+            $("#enviar").click(function() {
+                $(".formulario").fadeOut("slow");// acutando o div de formulario
+                beforeSend:$(".carregando").fadeIn("slow");// exibindo a div carregando
+                // pegando variaveis
+                var origem = $("#origem").val();
+                var id_set = $("#id_set").val();
+                var titulo_set = $("#titulo_set").val();
+                var descricao_set = $("#descricao_set").val();
+                // postando dados
+                $.post("{PATH_ACTION}/?pagina=salve", {
+                    origem: origem, id_set: id_set, titulo_set: titulo_set, descricao_set: descricao_set
+                }, function(pegar_dados) {
+                    complete:$(".carregando").fadeOut("slow"); // acutando div carregando
+                    $(".retorno").fadeIn("slow").html(pegar_dados); // pegando dados de retorno e exibindo div retorno
+                    $(".formulario").fadeIn("slow");// acutando o div de formulario
+                    // evento do baotao voltar
+                    $("#fechar").click(function() {
+                        $(".retorno").fadeOut("slow"); // acutando a div retorno
+                        //$(".formulario").fadeIn("slow");// exibindo formulario
+                    });
+                });
+            });
+        });
+    </script>
+
+    <div class="carregando"><img src="{IMG}ajax-loader.gif" alt="" /><br />Aguarde, Carregando...</div>
+    <div class="retorno"></div>
+
+    <div class="formulario">
+
+        <input type="hidden" id="origem" value="{Global_origem_edit}" />
+        <input type="hidden" id="id_set" value="{Global_id_set}" />
+
+        <div class="tabbable tabs-left"> <!-- Only required for left/right tabs -->
+            <ul class="nav nav-tabs">
+                <li class="active"><a href="#tab1" data-toggle="tab">Setor</a></li>
+            </ul>
+            <div class="tab-content">
+
+                <!-- Dados do SETOR -->
+                <div class="tab-pane active" id="tab1">
+                    <div class="row">
+                        <div class="span5">
+                            <label>SETOR:</label> 
+                            <input class="span5" type="text" id="titulo_set" value="{Global_titulo_set}" placeholder="DIGITE O NOME DO SETOR">
+                        </DIV>
+                        <div class="span7">
+                            <label>OBSERVAÇÕES:</label>
+                            <textarea class="span7" id="descricao_set" rows="10">{Global_descricao_set}</textarea>
+                        </div>
+
+                    </div>
+                </div>
+
+
+            </div>
+        </div>   
+
+        <div class="form-actions well-small text-center navbar-fixed-bottom">
+            <button type="button" onclick="window.location = '{Global_voltar_pra_list}'" class="btn btn-info">
+                <i class="icon-arrow-left icon-white"></i>&nbsp;Voltar</button>
+            <!-- button type="button" class="btn btn-danger">
+                <i class="icon-ban-circle icon-white"></i>&nbsp;Cancelar</button -->
+            <button type="button" class="btn btn-success" id="enviar">
+                <i class="icon-ok icon-white"></i>&nbsp;Salvar</button>
+        </div>
+
+    </div>
+</div> 

@@ -1,0 +1,50 @@
+
+
+# CONTANTES PARA UTILIZAÇÃO NO TEMA
+	{TITULO}		= Contant do titulo da pagina
+	{CSS}                   = Constant da pasta de css /public/css            | configurado em setup.ini
+	{JS}                    = Constant da pasta de javascript /public/js      | configurado em setup.ini
+	{IMG}                   = Constant do diretorio de arquivos /public/img  | configurado em setup.ini
+	{PATH}                  = Constant do endereço do systema http://meusystema.com.br 
+	{PATH_PUBLIC}           = Constant do endereço d da pasta public http://meusystema.com.br/public
+	{PATH_ACTION}           = Constant do endereço do endereço com a action http://meusystema.com.br/controller/action 
+	{PATH_CONTROLLER}       = Constant do endereço do endereço com o controller http://meusystema.com.br/controller 
+	{ACTION}                = Constant da action 
+	{CONTROLLER}            = Constant do controller 
+
+# ESTAS VARIAVEIS PRÉFIXADAS PODEN CHAMAR SEUS REFERIDOS DIRETAMENTE
+	{LI_####}		= Variaveis definidas por chaves definidas no arquivo de linguagem em lng
+
+# FUNÇÕES PARA O CONTROLLER
+        self::Helper("index")
+            Esta função é reponsavel por carregar o helpers da pasta public
+
+        self::Lng("RC")
+            Esta função é reponsavel por carregar os parametros da liguagem
+
+        self::Layout("index", "Galeria::Home")
+            Esta função é reponsavel por carregar os layouts
+
+# ESTAS VARIAVEIS PRÉFIXADAS SÃO DEFINIDAS NOS CONTROLLERS
+	{Global_####}		= Variaveis definidas no controlador correspondente as GLOBALS['###']
+	{Helper_####}		= Variaveis definidas no controlador correspondente as GLOBALS['Helper']['###']
+	{View_###}		= Variaveis correspondente Painel.html e controladores Views 
+
+# CONTANTES GLOBAIS PARA USO NO FRAMEWORK
+	SYSTEM                  = controle padrão
+	ACTION                  = action
+	CONTROLLER              = controller
+	PATH_ACTION             = http://meusystema.com.br/controller/action
+	PATH_CONTROLLER         = http://meusystema.com.br/controller
+	PATH_PUBLIC             = http://meusystema.com.br/public
+	PATH                    = http://meusystema.com.br
+	DIR_PATH                = Diretorio real até a pasta ./public
+
+
+# OUTROS 
+	function config($file)   -> responsavel por tratar configurações definidas 
+								em /biblioteca/setup.ini
+	function getClass($file) -> responsavel por instanciar qualquer classe 
+								carregada antecipadamente
+	function getImportClass($path, $file) -> responsavel por carregar e instanciar 
+											 a qualquer momento uma classe

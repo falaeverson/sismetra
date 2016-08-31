@@ -1,0 +1,55 @@
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <title>{TITULO}</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <!-- link rel="shortcut icon" href="https://fbstatic-a.akamaihd.net/rsrc.php/yl/r/H3nktOa7ZMg.ico" -->
+        <link rel="shortcut icon" href="http://www.google.com.br/images/google_favicon_128.png">
+        <link rel="stylesheet" href="{CSS}style.css">
+        <link rel="stylesheet" href="{CSS}login.css">
+    </head>   
+    <body>
+        {Helper_alerta} 
+        <!-- Topo -->
+        <div class="topo">
+            <div class="topo_center">
+                <div class="logo" onclick="window.location = '{PATH}'"></div>
+                <!-- div class="convites_ico"></div>
+                <div class="mensagem_ico"></div>
+                <div class="notificao_ico"></div -->
+
+                <form action="{PATH_CONTROLLER}/verificaDadosLogin" method="post" name="login" id="login">
+                    <input type="text" name="usuario" value="{Global_login}" placeholder="Nome de usuário" 
+                           {Global_erro_login}/>
+                    <input type="password" name="senha" value="{Global_password}" placeholder="Senha" 
+                           {Global_erro_senha} />
+                    <input type="submit" name="btn" id="cadastrar" value="Entrar" />
+                </form>
+
+
+            </div>
+
+
+
+
+        </div>
+
+        <!-- Container Principal --> 
+        <div class="container">
+
+            <center>
+                <h1>{Global_email}</h1>
+            </center>
+
+            <div class="clear"></div>
+        </div>
+
+
+    </body>
+
+</html>

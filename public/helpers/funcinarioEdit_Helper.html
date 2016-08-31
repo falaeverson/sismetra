@@ -1,0 +1,223 @@
+<!-- Mapa de navegação -->
+<ul class="breadcrumb">
+    <li><a href="{PATH_CONTROLLER}">Home</a> <span class="divider">/</span></li>
+    <li><a href="{PATH_ACTION}">Cadastro</a> <span class="divider">/</span></li>
+    <li><a href="{PATH_ACTION}">Funcionários</a> <span class="divider">/</span></li>
+    <li><a href="{Global_voltar_pra_list}">Lista de Funcionários</a> <span class="divider">/</span></li>
+    <li class="active">{Global_map}</li>
+</ul>
+
+<!-- inicio do conteudo -->
+<div class="container">
+
+    <script type="text/javascript">
+        $(function() {
+            // evento do botao
+            $("#enviar").click(function() {
+                $(".formulario").fadeOut("slow");// acutando o div de formulario
+                beforeSend:$(".carregando").fadeIn("slow");// exibindo a div carregando
+                // pegando variaveis
+                var origem = $("#origem").val();
+                var id_fun = $("#id_fun").val();
+                var drt = $("#drt").val();
+                var nome = $("#nome").val();
+                var cpf = $("#cpf").val();
+                var rg = $("#rg").val();
+                var estado_civil = $("#estado_civil").val();
+                var sexo = $("#sexo").val();
+                var setor = $("#setor").val();
+                var funcao = $("#funcao").val();
+                var dt_nascimento = $("#dt_nascimento").val();
+                var situacao_fun = $("#situacao_fun").val();
+                var obs = $("#obs").val();
+                var endereco = $("#endereco").val();
+                var numero = $("#numero").val();
+                var bairro = $("#bairro").val();
+                var cidade = $("#cidade").val();
+                var estado = $("#estado").val();
+                var cep = $("#cep").val();
+                var fone = $("#fone").val();
+                var celular_1 = $("#celular_1").val();
+                var celular_2 = $("#celular_2").val();
+                var email = $("#email").val();
+                // postando dados
+                $.post("{PATH_ACTION}/?pagina=salve", {
+                    origem: origem, id_fun: id_fun, drt: drt, nome: nome, cpf: cpf, rg: rg, estado_civil: estado_civil, sexo: sexo,
+                    setor: setor, funcao: funcao, dt_nascimento: dt_nascimento, situacao_fun: situacao_fun, obs: obs, endereco: endereco, numero: numero,
+                    bairro: bairro, cidade: cidade, estado: estado, cep: cep, fone: fone, celular_1: celular_1, celular_2: celular_2,
+                    email: email
+                }, function(pegar_dados) {
+                    complete:$(".carregando").fadeOut("slow"); // acutando div carregando
+                    $(".retorno").fadeIn("slow").html(pegar_dados); // pegando dados de retorno e exibindo div retorno
+                    $(".formulario").fadeIn("slow");// acutando o div de formulario
+                    // evento do baotao voltar
+                    $("#fechar").click(function() {
+                        $(".retorno").fadeOut("slow"); // acutando a div retorno
+                        //$(".formulario").fadeIn("slow");// exibindo formulario
+                    });
+                });
+            });
+        });
+
+    </script>
+
+    <div class="carregando"><img src="{IMG}ajax-loader.gif" alt="" /><br />Aguarde, Carregando...</div>
+    <div class="retorno"></div>
+
+    <div class="formulario">
+
+        <input type="hidden" name="origem" id="origem" value="{Global_origem_edit}" />
+        <input type="hidden" name="id_fun" id="id_fun" value="{Global_id_fun}" />
+        <div class="tabbable tabs-left"> <!-- Only required for left/right tabs -->
+            <ul class="nav nav-tabs">
+                <li class="active"><a href="#tab1" data-toggle="tab">Dados Pessoais</a></li>
+                <li><a href="#tab2" data-toggle="tab">Contato e Endereço</a></li>
+            </ul>
+            <div class="tab-content">
+
+                <!-- Dados do FUNCIONARIO -->
+                <div class="tab-pane active" id="tab1">
+                    <div class="row">
+                        <div class="span1">
+                            <label>DRT:</label> <input id="drt" value="{Global_drt}" class="span1" type="text" placeholder="">
+                        </DIV>
+                        <div class="span5">
+                            <label>NOME:</label> <input id="nome" value="{Global_nome}" class="span5" type="text" placeholder="DIGITE O NOME DO FUNCIONÁRIO">
+                        </DIV>
+                        <div class="span2">
+                            <label>CPF:</label> 
+                            <input id="cpf" value="{Global_cpf}" class="span2" type="text" placeholder="DIGITE O CPF"
+                                   onkeypress="mascara(this, '###.###.###-##');
+            return SomenteNumero(event)" maxlength="14">
+                        </div>
+                        <div class="span2">
+                            <label>RG:</label> 
+                            <input id="rg" value="{Global_rg}" class="span2" type="text" placeholder="DIGITE O RG"
+                                   onkeypress="return SomenteNumero(event)" maxlength="9">
+                        </div>
+                        <div class="span2">
+                            <label>SEXO:</label>
+                            <select id="sexo" class="span2">
+                                <option value="0">SELECIONE</option>
+                                {Global_list_sexo}
+                            </select>
+                        </div>
+                        <div class="span2">
+                            <label>ESTADO CIVIL:</label> 
+                            <select id="estado_civil" class="span2">
+                                <option value="0">SELECIONE</option>
+                                {Global_list_civil}
+                            </select>
+                        </div>
+                        <div class="span2">
+                            <label>DATA NASC.:</label> 
+                            <div id="datetime" class="input-append date">
+                                <input id="dt_nascimento" value="{Global_dt_nascimento}" 
+                                       class="input-small" type="text" maxlength="10"
+                                       onkeypress="mascara(this, '##/##/####');
+            return SomenteNumero(event)">
+                                <span class="add-on"><i class="icon-calendar"></i></span>
+                            </div>
+                        </div>
+                        <div class="span2">
+                            <label>SITUAÇÃO</label> 
+                                <select name="situacao" class="span2" id="situacao_fun">
+                                    <option value=""></option>
+                                    {Global_list_situacao}
+                                </select>
+                        </div>
+                        <div class="span2">
+                            <p><br /><br /><br /></p>
+                        </div>
+                        <div class="span4">
+                            <label>SETOR:</label> 
+                            <select name="setor" id="setor" class="span4">
+                                <option value="">SELECIONE UM SETOR</option>
+                                {Global_list_setor}
+                            </select>
+                        </div>
+                        <div class="span4">
+                            <label>FUNÇÃO:</label> 
+                            <select name="funcao" id="funcao" class="span4">
+                                {Global_list_funcao}
+                            </select>
+                        </div>
+                        <div class="span7">
+                            <label>OBSERVAÇÕES:</label>
+                            <textarea id="obs" class="span7" rows="10">{Global_obs}</textarea>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- endereço do FUNCIONARIO -->
+                <div class="tab-pane" id="tab2">
+                    <div class="span5">
+                        <label>ENDEREÇO:</label> 
+                        <input id="endereco" value="{Global_endereco}" class="span5" type="text" placeholder="DIGITE O ENDEREÇO">
+                    </div>
+                    <div class="span1">
+                        <label>NUMERO:</label> 
+                        <input id="numero" value="{Global_numero}" class="span1" type="text" placeholder="00">
+                    </div>
+                    <div class="span3">
+                        <label>BAIRRO:</label> 
+                        <input id="bairro" value="{Global_bairro}" class="span3" type="text" placeholder="DIGITE O BAIRRO">
+                    </div>
+                    <div class="span3">
+                        <label>CIDADE:</label> 
+                        <input id="cidade" value="{Global_cidade}" class="span3" type="text" placeholder="DIGITE A CIDADE">
+                    </div>
+                    <div class="span1">
+                        <label>ESTADO:</label> 
+                        <input id="estado" value="{Global_estado}" class="span1" maxlength="2" type="text" placeholder="PB">
+                    </div>
+                    <div class="span4">
+                        <label>CEP:</label> 
+                        <input id="cep" value="{Global_cep}" class="span2" type="text" maxlength="10" placeholder="00.000-000"
+                               onkeypress="mascara(this, '##.###-###');
+            return SomenteNumero(event)">
+                    </div>
+                    <div class="span2">
+                        <label>TELEFONE:</label> 
+                        <input id="fone" value="{Global_fone}" class="span2" type="text" maxlength="12" placeholder="(00)0000-0000"
+                               onkeypress="mascara(this, '## ####-####');
+            return SomenteNumero(event)">
+                    </div>
+                    <div class="span2">
+                        <label>CELULAR 1:</label> 
+                        <input id="celular_1" value="{Global_celular_1}" class="span2" type="text" maxlength="12" placeholder="(00)0000-0000"
+                               onkeypress="mascara(this, '## ####-####');
+            return SomenteNumero(event)">   
+                    </div>
+                    <div class="span2">
+                        <label>CELULAR 2:</label> 
+                        <input id="celular_2" value="{Global_celular_2}" class="span2" type="text" maxlength="12" placeholder="(00)0000-0000"
+                               onkeypress="mascara(this, '## ####-####');
+            return SomenteNumero(event)">
+                    </div>
+                    <div class="span3">
+                        <label>E-MAIL:</label> 
+                        <div class="input-prepend">
+                            <span class="add-on">@</span>
+                            <input id="email" value="{Global_email}" class="span3" type="text" placeholder="CONTATO@EMAIL.COM">
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>   
+
+
+
+        <div class="form-actions well-small text-center navbar-fixed-bottom">
+            <button type="button" onclick="window.location = '{Global_voltar_pra_list}'" class="btn btn-info">
+                <i class="icon-arrow-left icon-white"></i>&nbsp;Voltar</button>
+            <!-- button type="button" class="btn btn-danger">
+                <i class="icon-ban-circle icon-white"></i>&nbsp;Cancelar</button -->
+            <button type="button" class="btn btn-success" id="enviar">
+                <i class="icon-ok icon-white"></i>&nbsp;Salvar</button>
+        </div>
+
+    </div>
+</div> 
