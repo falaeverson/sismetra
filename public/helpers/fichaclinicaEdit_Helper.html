@@ -1,0 +1,276 @@
+<!-- Mapa de navegação -->
+<ul class="breadcrumb">
+    <li><a href="{PATH_CONTROLLER}">Home</a> <span class="divider">/</span></li>
+    <li><a href="{PATH_ACTION}">Atendimento</a> <span class="divider">/</span></li>
+    <li><a href="{PATH_ACTION}">Ficha Clínica</a> <span class="divider">/</span></li>
+    <li><a href="{Global_voltar_pra_list}">Lista de Ficha</a> <span class="divider">/</span></li>
+    <li class="active">{Global_map}</li>
+</ul>
+
+<!-- inicio do conteudo -->
+<div class="container">
+
+    <div class="formulario">
+
+        <input type="hidden" name="origem" id="origem" value="{Global_origem_edit}" />
+        <input type="hidden" name="id_fic" id="id_fic" value="{Global_id_fic}" />
+
+        <div class="tabbable tabs-left"> <!-- Only required for left/right tabs -->
+            <ul class="nav nav-tabs">
+                <li class="active"><a href="#tab1" data-toggle="tab">Identificação</a></li>
+                <li><a href="#tab2" data-toggle="tab">Atendimento</a></li>
+                <li><a href="#tab3" data-toggle="tab">Anamnese</a></li>
+                <li><a href="#tab4" data-toggle="tab">Exames Complementáres</a></li>
+            </ul>
+            <div class="tab-content">
+
+                <!-- Identificação -->
+                <div class="tab-pane active" id="tab1">
+                    <div class="row">
+                        <div class="span2">
+                            <label>CODIGO:</label> 
+                            <input id="codigo" value="{Global_codigo}" class="span2" type="text" disabled>
+                        </DIV>
+                        <div class="span2">
+                            <label>DRT:</label> 
+                            <input id="drt" value="{Global_drt}" class="span2" type="text" disabled>
+                        </div>
+                        <div class="span5">
+                            <label>NOME:</label> 
+                            <input id="nome" value="{Global_nome}" class="span5" type="text" disabled>
+                        </div>
+                        <div class="span3">
+                            <label>CPF:</label> 
+                            <input id="cpf" value="{Global_cpf}" class="span3" type="text" disabled>
+                        </div>
+                        <div class="span2">
+                            <label>RG:</label> 
+                            <input id="rg" value="{Global_rg}" class="span2" type="text" disabled>
+                        </div>
+                        <div class="span2">
+                            <label>S.CIVIL:</label> 
+                            <input id="estado_civil" value="{Global_estado_civil}" class="span2" type="text" disabled>
+                        </div>
+                        <div class="span2">
+                            <label>SEXO:</label>
+                            <input id="sexo" value="{Global_sexo}" class="span2" type="text" disabled>
+                        </div>
+                        <div class="span1">
+                            <label>IDADE:</label> 
+                            <input id="idade" value="{Global_idade}" class="span1" type="text" disabled>
+                        </div>
+                        <div class="span4">
+                            <label>SETOR:</label> 
+                            <input id="setor" value="{Global_setor}" class="span4" type="text" disabled>
+                        </div>
+                        <div class="span4">
+                            <label>FUNCAO:</label> 
+                            <input id="funcao" value="{Global_funcao}" class="span4" type="text" disabled>
+                        </div>
+
+                        <div class="span4">
+                            <label>D.H ATENDIMENTO:</label> 
+                            <input id="dt_atendimento" value="{Global_dt_atendimento}" class="span4" type="text" disabled>
+                        </div>
+                        <div class="span5">
+                            <label>MEDICO RESPONSAL:</label> 
+                            <input id="medico" value="{Global_medico}" class="span5" type="text" disabled>
+                        </div>
+
+
+                    </div>
+                </div>
+
+                <!-- Atendimento -->
+                <div class="tab-pane" id="tab2">
+                    <div class="span3">
+                        <label>TIPO DE EXAME:</label>
+                        <input value="{Global_tipo_exame}" class="span3" type="text" disabled>
+                    </div>
+                    <div class="span1">
+                        <label>PA:</label> 
+                        <input value="{Global_pa}" class="span1" type="text" disabled>
+                    </div>
+                    <div class="span1">
+                        <label>PESO:</label> 
+                        <input value="{Global_peso}" class="span1" type="text" disabled>
+                    </div>
+                    <div class="span1">
+                        <label>ALTURA:</label> 
+                        <input value="{Global_altura}" class="span1" type="text" disabled>
+                    </div>
+                    <div class="span1">
+                        <label>IMC:</label> 
+                        <input value="{Global_imc}" class="span1" type="text" disabled>
+                    </div>
+                    <div class="span4">
+                        <label>OBESIDADE:</label> 
+                        <input value="{Global_obesidade}" class="span4" type="text" disabled>
+                    </div>
+                </div>
+
+                <!-- Anamnese -->
+                <div class="tab-pane" id="tab3">
+                    <label>ANAMNESE:</label>
+                    <textarea class="span8" rows="10" disabled>{Global_anamnese}</textarea>
+                </div>
+
+                <!-- 
+                Exames Complementares 
+                -->
+                <div class="tab-pane" id="tab4">
+                    <table class="table table-condensed table-bordered table-striped">
+                        <thead>
+                            <tr>
+                                <th class="span3">EXAME:</th>
+                                <th class="span2">DATA:</th>
+                                <th class="span2">RESULTA:</th>
+                                <th class="span2">SITUAÇÃO:</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Hemograma</td>  
+                                <td>{Global_ficha_data_hemo}</td>  
+                                <td>{Global_ficha_valor_hemo}</td>  
+                                <td>{Global_ficha_situ_hemo}</td>  
+                            </tr>
+                            <tr>
+                                <td>Colester&oacute;l Total</td>  
+                                <td>{Global_ficha_data_coles}</td>  
+                                <td>{Global_ficha_valor_coles}</td>  
+                                <td>{Global_ficha_situ_coles}</td>  
+                            </tr>
+                            <tr>
+                                <td>Triglicerides</td>  
+                                <td>{Global_ficha_data_trig}</td>  
+                                <td>{Global_ficha_valor_trig}</td>  
+                                <td>{Global_ficha_situ_trig}</td>  
+                            </tr>
+                            <tr>
+                                <td>Glicemia</td>  
+                                <td>{Global_ficha_data_glic}</td>  
+                                <td>{Global_ficha_valor_glic}</td>  
+                                <td>{Global_ficha_situ_glic}</td>  
+                            </tr>
+                            <tr>
+                                <td>Class. Sanginea</td>  
+                                <td>{Global_ficha_data_clsa}</td>  
+                                <td>{Global_ficha_valor_clsa}</td>  
+                                <td>{Global_ficha_situ_clsa}</td>  
+                            </tr>
+                            <tr>
+                                <td>Par. de Fezes</td>  
+                                <td>{Global_ficha_data_prfe}</td>  
+                                <td>{Global_ficha_valor_prfe}</td>  
+                                <td>{Global_ficha_situ_prfe}</td>  
+                            </tr>
+                            <tr>
+                                <td>Sum&aacute;rio de Urina</td>  
+                                <td>{Global_ficha_data_smur}</td>  
+                                <td>{Global_ficha_valor_smur}</td>  
+                                <td>{Global_ficha_situ_smur}</td>  
+                            </tr>
+                            <tr>
+                                <td>Sorol. Hepatite IGG/IGM</td>  
+                                <td>{Global_ficha_data_sohe}</td>  
+                                <td>{Global_ficha_valor_sohe}</td>  
+                                <td>{Global_ficha_situ_sohe}</td>  
+                            </tr>
+                            <tr>
+                                <td>Sorol. Toxoplasmose</td>  
+                                <td>{Global_ficha_data_soto}</td>  
+                                <td>{Global_ficha_valor_soto}</td>  
+                                <td>{Global_ficha_situ_soto}</td>  
+                            </tr>
+                            <tr>
+                                <td>RX do T&oacute;rax e Perfil</td>  
+                                <td>{Global_ficha_data_rxtp}</td>  
+                                <td>{Global_ficha_valor_rxtp}</td>  
+                                <td>{Global_ficha_situ_rxtp}</td>  
+                            </tr>
+                            <tr>
+                                <td>RX da Coluna Lombar</td>  
+                                <td>{Global_ficha_data_rxcl}</td>  
+                                <td>{Global_ficha_valor_rxcl}</td>  
+                                <td>{Global_ficha_situ_rxcl}</td>  
+                            </tr>
+                            <tr>
+                                <td>RX do T&oacute;rax</td>  
+                                <td>{Global_ficha_data_rxto}</td>  
+                                <td>{Global_ficha_valor_rxto}</td>  
+                                <td>{Global_ficha_situ_rxto}</td>  
+                            </tr>
+                            <tr>
+                                <td>ECG</td>  
+                                <td>{Global_ficha_data_ecg}</td>  
+                                <td>{Global_ficha_valor_ecg}</td>  
+                                <td>{Global_ficha_situ_ecg}</td>  
+                            </tr>
+                            <tr>
+                                <td>EEG</td>  
+                                <td>{Global_ficha_data_eeg}</td>  
+                                <td>{Global_ficha_valor_eeg}</td>  
+                                <td>{Global_ficha_situ_eeg}</td>  
+                            </tr>
+                            <tr>
+                                <td>Audiometria</td>  
+                                <td>{Global_ficha_data_audi}</td>  
+                                <td>{Global_ficha_valor_audi}</td>  
+                                <td>{Global_ficha_situ_audi}</td>  
+                            </tr>
+                            <tr>
+                                <td>VDRL</td>  
+                                <td>{Global_ficha_data_vdrl}</td>  
+                                <td>{Global_ficha_valor_vdrl}</td>  
+                                <td>{Global_ficha_situ_vdrl}</td>  
+                            </tr>
+                            <tr>
+                                <td>Avaliação Oftalmolágica</td>  
+                                <td>{Global_ficha_data_ava_ofta}</td>  
+                                <td>{Global_ficha_valor_ava_ofta}</td>  
+                                <td>{Global_ficha_situ_ava_ofta}</td>  
+                            </tr>
+                            <tr>
+                                <td>Acuidade Visual</td>   
+                                <td>{Global_ficha_data_acu_visu}</td>  
+                                <td>{Global_ficha_valor_acu_visu}</td>  
+                                <td>{Global_ficha_situ_acu_visu}</td>  
+                            </tr>
+                            <tr>
+                                <td>Avaliação Cardíaca</td>  
+                                <td>{Global_ficha_data_ava_card}</td>  
+                                <td>{Global_ficha_valor_ava_card}</td>  
+                                <td>{Global_ficha_situ_ava_card}</td>  
+                            </tr>
+                            <tr>
+                                <td>Avaliação Especialista</td>  
+                                <td>{Global_ficha_data_ava_espe}</td>  
+                                <td>{Global_ficha_valor_ava_espe}</td>  
+                                <td>{Global_ficha_situ_ava_espe}</td>  
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>  
+
+        <div class="form-actions well-small text-center navbar-fixed-bottom">
+            {Global_btnAnt}
+            <button type="button" onclick="window.location = '{Global_voltar_pra_list}'" class="btn btn-info">
+                <i class="icon-arrow-left icon-white"></i>&nbsp;Voltar</button>
+            <!-- button type="button" class="btn btn-danger">
+                <i class="icon-ban-circle icon-white"></i>&nbsp;Cancelar</button  -->
+            <button type="button" class="btn btn-danger" onclick="if(!confirm('Tem certeza que deseja enviar esta ficha para lixeira?')) return false; 
+                    window.location='{PATH_ACTION}/?pagina=lixeira&id_del={Global_codigo}&origem={Global_origem_list}'">
+                <i class="icon-trash icon-white"></i>&nbsp;Enviar para lixeira</button>
+            <button type="button" class="btn btn-inverse" onclick="javascript:abrir('{PATH_CONTROLLER}/relatorio/?p={Global_relIdConsulta}')">
+                <i class="icon-print icon-white"></i>&nbsp;Imprimir</button>
+
+            {Global_btnAtu}
+            {Global_btnPro}
+        </div>
+
+    </div>
+</div> 

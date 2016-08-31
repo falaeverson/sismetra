@@ -1,0 +1,207 @@
+<!-- Mapa de navegação -->
+<ul class="breadcrumb">
+    <li><a href="{PATH_CONTROLLER}">Home</a> <span class="divider">/</span></li>
+    <li><a href="{PATH_ACTION}">Atendimento</a> <span class="divider">/</span></li>
+    <li><a href="{PATH_ACTION}">Consultas</a> <span class="divider">/</span></li>
+    <li><a href="{Global_voltar_pra_list}">Lista de Consultas</a> <span class="divider">/</span></li>
+    <li class="active">{Global_map}</li>
+</ul>
+
+<!-- inicio do conteudo -->
+<div class="container">
+
+    <script type="text/javascript">
+        $(function() {
+            // evento do botao
+            $("#enviar").click(function() {
+                $(".formulario").fadeOut("slow");// acutando o div de formulario
+                beforeSend:$(".carregando").fadeIn("slow");// exibindo a div carregando
+                // pegando variaveis
+                var origem = $("#origem").val();
+                var id_cons = $("#id_cons").val();
+                var tipo_exame = $("#tipo_exame").val();
+                var data_hora_aten_cons = $("#data_hora_aten_cons").val();
+                var id_fun = $("#id_fun").val();
+                var id_med = $("#id_med").val();
+                var obs_cons = $("#obs_cons").val();
+                var ficha_pa = $("#ficha_pa").val();
+                var ficha_peso = $("#ficha_peso").val();
+                var ficha_altu = $("#ficha_altu").val();
+                var ficha_imc = $("#ficha_imc").val();
+                var ficha_obes = $("#ficha_obes").val();
+
+                $.post("{PATH_ACTION}/?pagina=salve", {
+                    origem: origem, id_cons: id_cons, tipo_exame: tipo_exame, data_hora_aten_cons: data_hora_aten_cons,
+                    id_fun: id_fun, id_med: id_med, obs_cons: obs_cons, ficha_pa: ficha_pa, ficha_peso: ficha_peso,
+                    ficha_altu: ficha_altu, ficha_imc: ficha_imc, ficha_obes: ficha_obes
+                }, function(pegar_dados) {
+                    complete:$(".carregando").fadeOut("slow"); // acutando div carregando
+                    $(".retorno").fadeIn("slow").html(pegar_dados); // pegando dados de retorno e exibindo div retorno
+                    $(".formulario").fadeIn("slow");// exibindo o div de formulario
+                    // evento do baotao voltar
+                    $("#fechar").click(function() {
+                        $(".retorno").fadeOut("slow"); // acutando a div retorno
+                        //$(".formulario").fadeIn("slow");// exibindo formulario
+                    });
+                });
+            });
+        });
+
+        function calculandoImc()
+        {   // http://www.calculoimc.com.br/tabela-de-imc/
+            var peso = document.getElementById("ficha_peso").value;
+            var altura = document.getElementById("ficha_altu").value;
+            var resultado = 0;
+            var situacao = '';
+
+            var peso1 = parseFloat(peso); // coloquei float, mas se quiser pode colocar inteiro assim parseInt(campo1).  disabled="disabled"
+            var altura1 = parseFloat(altura); // coloquei float, mas se quiser pode colocar inteiro assim parseInt(campo1).
+            if (altura1) {
+                resultado = parseInt(peso1 / (altura1 * altura1));
+
+                if (resultado <= 17) {
+                    situacao = 'Muito abaixo do peso';
+                }
+                if (resultado > 17 && resultado <= 18) {
+                    situacao = 'Abaixo do peso';
+                }
+                if (resultado > 18 && resultado <= 24) {
+                    situacao = 'Peso normal';
+                }
+                if (resultado > 25 && resultado <= 29) {
+                    situacao = 'Acima do peso';
+                }
+                if (resultado > 30 && resultado <= 34) {
+                    situacao = 'Obesidade I';
+                }
+                if (resultado > 35 && resultado <= 39) {
+                    situacao = 'Obesidade II (severa)';
+                }
+                if (resultado > 40) {
+                    situacao = 'Obesidade III (morbida)';
+                }
+            }
+
+            document.getElementById('ficha_imc').value = resultado;
+            document.getElementById('ficha_obes').value = situacao;
+        }
+        // substituindo virgula por ponto
+        function SubstituiVirgulaPorPonto(campo)
+        {
+            campo.value = campo.value.replace(/,/gi, ".");
+        }
+
+    </script>
+
+    <div class="carregando"><img src="{IMG}ajax-loader.gif" alt="" /><br />Aguarde, Carregando...</div>
+    <div class="retorno"></div>
+
+    <div class="formulario">
+
+        <input type="hidden" name="origem" id="origem" value="{Global_origem_edit}" />
+        <input type="hidden" name="id_cons" id="id_cons" value="{Global_id_cons}" />
+
+        <div class="tabbable tabs-left"> <!-- Only required for left/right tabs -->
+            <ul class="nav nav-tabs">
+                <li class="active"><a href="#tab1" data-toggle="tab">Dados da Consulta</a></li>
+            </ul>
+            <div class="tab-content">
+
+                <!-- Identificação -->
+                <div class="tab-pane active" id="tab1">
+                    <div class="row">
+                        <div class="span1">
+                            <label>CODIGO:</label> 
+                            <input id="codigo" value="{Global_id_cons}" class="span1" type="text" placeholder="" disabled>
+                        </div>
+
+                        <div class="span3">
+                            <label>TIPO DE EXAME:</label> 
+                            <select id="tipo_exame" class="span3">
+                                {Global_list_tipo_exame}
+                            </select>
+                        </div>
+
+                        <div class="span2">
+                            <label>DATA E HORA:</label> 
+                            <div id="datetimepicker" class="input-append datepicker">
+                                <input id="data_hora_aten_cons" value="{Global_data_hora_aten_cons}" 
+                                       class="input-medium" type="text" maxlength="16"
+                                       onkeypress="mascara(this, '##/##/#### ##:##');
+            return SomenteNumero(event)">
+                                <span class="add-on"><i class="icon-calendar"></i></span>
+                            </div>
+                        </div> 
+
+                        <div class="clearfix"></div>
+
+                        <div class="span5">
+                            <label>NOME:</label> 
+                            <select id="id_fun" class="span5">
+                                {Global_list_funcionario}
+                            </select>
+                        </div>
+
+                        <div class="span4">
+                            <label>MÉDICO:</label> 
+                            <select id="id_med" class="span4">
+                                {Global_list_medico}
+                            </select>
+                        </div>
+
+                        <div class="span9">
+                            <label>OBS:</label>
+                            <textarea id="obs_cons" class="span9" rows="5">{Global_obs_cons}</textarea>
+                        </div>
+
+                        <div class="clearfix"><br /></div>
+
+                        <div class="span1">
+                            <label>PA:</label> 
+                            <input class="span1" id="ficha_pa" value="{Global_ficha_pa}" type="text" placeholder="">
+                        </div>
+                        <div class="span1">
+                            <label>PESO:</label> 
+                            <input class="span1" id="ficha_peso" value="{Global_ficha_peso}" type="text" placeholder=""
+                                   onkeyup="calculandoImc();
+            SubstituiVirgulaPorPonto(this)" maxlength="6">
+                        </div>
+                        <div class="span1">
+                            <label>ALTURA:</label> 
+                            <input class="span1" id="ficha_altu" value="{Global_ficha_altu}" type="text" placeholder=""
+                                   onkeyup="calculandoImc();
+            SubstituiVirgulaPorPonto(this);" maxlength="4">
+                        </div>
+                        <div class="span1">
+                            <label>IMC:</label> 
+                            <input class="span1 uneditable-input" id="ficha_imc" value="{Global_ficha_imc}" readonly="readonly" type="text" placeholder="">
+                        </div>
+                        <div class="span4">
+                            <label>OBESIDADE:</label> 
+                            <input class="span4" id="ficha_obes" readonly="readonly" value="{Global_ficha_obes}" type="text" placeholder="">
+                        </div>
+
+
+                    </div>
+                </div>
+
+
+            </div>
+        </div>  
+
+        <div class="form-actions well-small text-center navbar-fixed-bottom">
+            <button type="button" onclick="window.location = '{Global_voltar_pra_list}'" class="btn btn-info">
+                <i class="icon-arrow-left icon-white"></i>&nbsp;Voltar</button>
+            <!-- button type="button" class="btn btn-danger">
+                <i class="icon-ban-circle icon-white"></i>&nbsp;Cancelar</button -->
+            <button type="button" class="btn btn-danger" onclick="if (!confirm('Tem certeza que deseja enviar esta ficha para lixeira?'))
+                return false;
+            window.location = '{PATH_ACTION}/?pagina=lixeira&id_del={Global_id_cons}&origem={PATH_ACTION}'">
+                <i class="icon-trash icon-white"></i>&nbsp;Enviar para lixeira</button>
+            <button type="button" class="btn btn-success" id="enviar">
+                <i class="icon-ok icon-white"></i>&nbsp;Salvar</button>
+
+        </div>
+
+    </div>
+</div> 

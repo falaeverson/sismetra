@@ -1,0 +1,8 @@
+Dados para o andamento do projeto:
+http://agenciaconecte.com.br/projeto_rede/
+BD: mysql.agenciaconecte.com.br
+usuario: agenciaconecte19
+senha: conecte321
+ftp.agenciaconecte.com.br
+usuario: agenciaconecte
+senha: conecte321

@@ -1,0 +1,137 @@
+<!-- Mapa de navegação -->
+<ul class="breadcrumb">
+    <li><a href="{PATH_CONTROLLER}">Home</a> <span class="divider">/</span></li>
+    <li><a href="{PATH_ACTION}">Atendimento</a> <span class="divider">/</span></li>
+    <li><a href="{PATH_ACTION}">Consultas</a> <span class="divider">/</span></li>
+    <li class="active">Lista de Consultas</li>
+</ul>
+
+<!-- inicio do conteudo -->
+<div class="container">
+    <script>
+        $('document').ready(function() {
+
+            //$(".carregando").hide();
+            $('.cancelar').click(function() {
+                $(".lsB").fadeOut("slow");
+                $(".lsP").fadeIn("slow");
+                $(".cancelar").fadeOut("slow");
+            });
+
+            $('.buscar').click(function() {
+
+                var nome = $('#nome').val();
+                var codigo = $('#codigo').val();
+                var situacao = $('#situacao').val();
+
+                $(".lsP").fadeOut("slow"); // ocutando a listagem principal
+                beforeSend:$(".carregando").fadeIn("slow");// exibindo a div carregando
+                $(".cancelar").fadeIn("slow"); // exibindo o botão cancelar busca
+                $(".lsB").fadeIn("slow"); // exibindo listagem de busca
+
+                $.post('{PATH_ACTION}/?pagina=busca', {
+                    nome: nome, codigo: codigo, situacao: situacao
+                }, function(data) {
+                    complete:$(".carregando").fadeOut("slow"); // acutando div carregando
+                    $(".alvo").fadeIn("slow").html(data); // exibindo resultado da busca
+                });
+            });
+
+
+
+        });
+    </script>
+    <div class="lsP">{Global_paginacao}</div>
+    <!-- Button buscar -->
+    <a href="#myModal" role="button" class="btn btn-mini left" data-toggle="modal">Busca</a>
+    <a class="btn btn-warning btn-mini left cancelar hide">Cancelar busca</a>
+
+    <!-- Modal tela de busca -->
+    <div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h3 id="myModalLabel">Busca</h3>
+        </div>
+        <div class="modal-body">
+            <div class="span2">
+                <label>Codigo da Consulta</label>
+                <input type="text" class="span1" id="codigo" placeholder="Codigo" size="6" >
+            </div>
+            <div class="span3">
+                <label>Funcionario</label>
+                <input type="text" id="nome" placeholder="Digite o nome do funcionario" size="50" >
+            </div>
+            <div class="span3">
+                <label>Funcionario</label>
+                <select id="situacao" class="span3">
+                    {Global_list_situacao_ficha}
+                </select>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <!-- button class="btn " data-dismiss="modal" aria-hidden="true">Fechar</button -->
+            <button class="btn btn-success buscar" data-dismiss="modal" aria-hidden="true">Buscar</button>
+        </div>
+    </div>
+
+    <!-- Tabela de resultados das buscas  -->
+    <div class="carregando hide"><img src="{IMG}ajax-loader.gif" alt="" ><br />Aguarde, Carregando...</div>
+
+    <table class="table table-condensed table-bordered table-hover table-striped hide lsB">
+        <caption>
+            <h5>LISTA DE CONSULTAS</h5>
+        </caption>
+        <thead>
+            <tr class="info">
+                <th><i class="icon-tasks"></i>&nbsp;MENU</th>
+                <th>CODIGO</th>
+                <th>NOME</th>
+                <th>CPF</th>
+                <th>MÉDICO</th>
+                <th>TIPO</th>
+                <th>SITUAÇÃO</th>
+            </tr>
+        </thead>
+        <tbody class="alvo">
+            <!-- resultado da busca -->
+        </tbody>
+    </table>
+
+    <table class="table table-condensed table-bordered table-hover table-striped lsP">
+        <caption>
+            <h5>LISTA DE CONSULTAS</h5>
+        </caption>
+        <thead>
+            <tr class="info">
+                <th><i class="icon-tasks"></i>&nbsp;MENU</th>
+                <th>CODIGO</th>
+                <th>NOME</th>
+                <th>CPF</th>
+                <th>MÉDICO</th>
+                <th>TIPO</th>
+                <th>SITUAÇÃO</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- tr>
+                <td class="input-small">
+                    <a href="#" title="Excluir"><i class="icon-trash"></i></a>&nbsp;
+                    <a href="#" title="Visualizar"><i class="icon-zoom-in"></i></a>&nbsp;
+                    <a href="#" title="Editar"><i class="icon-edit"></i></a>&nbsp;
+                    <a href="#" title="Status"><i class=" icon-ok-circle"></i></a>
+                </td>
+                <td class="input-mini">REGISTRO DE TESTE</td>
+                <td class="input-xlarge">REGISTRO DE TESTE</td>
+                <td>REGISTRO DE TESTE</td>
+                <td class="input-medium">REGISTRO DE TESTE</td>
+                <td class="input-medium">REGISTRO DE TESTE</td>
+            </tr -->
+            {Global_lista}
+
+
+
+        </tbody>
+    </table>
+
+</div>
+

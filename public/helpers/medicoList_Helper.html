@@ -1,0 +1,44 @@
+<!-- Mapa de navegação -->
+<ul class="breadcrumb">
+    <li><a href="{PATH_CONTROLLER}">Home</a> <span class="divider">/</span></li>
+    <li><a href="{PATH_ACTION}">Cadastro</a> <span class="divider">/</span></li>
+    <li><a href="{PATH_ACTION}">Médico</a> <span class="divider">/</span></li>
+    <li class="active">Lista de Médicos</li>
+</ul>
+
+<!-- inicio do conteudo -->
+<div class="container">
+    {Global_paginacao}
+    <a href="{PATH_ACTION}/?pagina=edit&origem={Global_origem_list}" class="btn btn-primary btn-mini left">Novo registro</a>
+    <table class="table table-condensed table-bordered table-hover table-striped">
+        <caption>
+            <h5>LISTA DE MÉDICOS</h5>
+        </caption>
+        <thead>
+            <tr class="info">
+                <th><i class="icon-tasks"></i>&nbsp;MENU</th>
+                <th>NOME</th>
+                <th>ESPECIALIDADE</th>
+                <th>FONE</th>
+                <th>CELULAR</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- tr>
+                <td class="input-small">
+                    <a href="#" title="Excluir"><i class="icon-trash"></i></a>&nbsp;
+                    <a href="#" title="Visualizar"><i class="icon-zoom-in"></i></a>&nbsp;
+                    <a href="#" title="Editar"><i class="icon-edit"></i></a>&nbsp;
+                    <a href="#" title="Status"><i class=" icon-ok-circle"></i></a>
+                </td>
+                <td class="input-xlarge">REGISTRO DE TESTE</td>
+                <td>REGISTRO DE TESTE</td>
+                <td class="input-medium">REGISTRO DE TESTE</td>
+                <td class="input-medium">REGISTRO DE TESTE</td>
+            </tr -->
+
+            {Global_lista}
+
+        </tbody>
+    </table>
+</div>
